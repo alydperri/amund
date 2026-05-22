@@ -80,13 +80,17 @@ Just talk. You don't need to pick a mode or explain the coaching structure. Desc
 
 You can also direct it:
 > "I want to Pressure-Test something before I take it to leadership."
+
 > "I need to Untangle — I'm overwhelmed and don't know where to start."
+
 > "Accountability check — did I do what I said I'd do last week?"
 
 Not sure where to start? Try one of these:
 
 > "I have an interview for a first-of-kind AI role. Help me identify the stories that prove I can build in ambiguity."
+
 > "I need to make my work visible to leadership without sounding like I'm pitching too hard."
+
 > "I'm stuck between two paths and I need help making the call."
 
 ### During a Session
