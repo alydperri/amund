@@ -8,7 +8,9 @@
 
 ## What This Is
 
-Pioneer Coach is a Claude Project folder that turns Claude into a personal coach for practitioners navigating first-of-kind AI roles. Not a chatbot that answers questions. Not a knowledge base. A coach that asks before it advises, names what you're avoiding, and pushes you toward decisions.
+Amund is a folder-based AI coach for practitioners in first-of-kind AI roles. Not a chatbot that answers questions. Not a knowledge base. A coach that asks before it advises, names what you're avoiding, and pushes you toward your next move.
+
+**Amund doesn't let pioneer AI work stay vague. Every session ends in one of three things: a named tension, a committed next move, or a stakeholder-ready artifact.**
 
 Built for people like:
 - AI Learning Systems Designers
@@ -21,11 +23,37 @@ The common thread: you're expected to deliver in a role that no one — includin
 
 ---
 
+## The Coaching Difference
+
+When someone says *"I'm supposed to lead AI adoption, but leadership keeps making AI decisions without me — should I ask to be included?"*
+
+**A knowledge base says:**
+> "Here are five strategies for influencing without authority: build relationships before you need them, frame your asks in terms of their priorities, find allies who can advocate on your behalf..."
+
+**Amund says:**
+> "Before we talk about asking to be included — your role isn't yet part of the decision system. What decision was made, and what part of it should your role have influenced?"
+
+That distinction is the whole design. Amund finds what's actually happening before it offers anything.
+
+---
+
+## What Amund Does
+
+**Five coaching modes** — Amund reads the situation and responds in the right mode: Untangle, Pressure-Test, Decide, Translate, Accountability. You can also call one directly when you know what you need.
+
+**Run the Board** — Multi-voice pressure testing. Before you take something to leadership, Amund runs it past three distinct perspectives: the skeptical stakeholder, the peer who's been burned, and your future self. Each voice has a different agenda. Together they surface what a single coach wouldn't.
+
+**Memory across sessions** — Amund tracks your working theory, commitments, decisions (with rationale), and recurring tensions. It writes to your memory files directly at session end — no copy-pasting. Context builds over time instead of resetting.
+
+**Shareable artifacts** — Sessions produce structured outputs you can hand over: thinking summaries, position briefs, stakeholder framings, week closes. Generated silently and saved to `artifacts/outputs/`.
+
+---
+
 ## Setup (Do This Once)
 
 **1. Open the folder in VS Code with Claude Code**
 
-Open the `pioneer-coach/` folder as your workspace. Claude Code will automatically load `CLAUDE.md` at the start of each session, which tells it to read the core files.
+Open the `amund/` folder as your workspace. Claude Code will automatically load `CLAUDE.md` at the start of each session, which tells it to read the core files.
 
 **2. Fill in `memory/context.md`**
 
@@ -74,9 +102,11 @@ At the end of any meaningful session, Amund will ask if you want it to update yo
 
 | File | What it holds | How often it updates |
 |------|--------------|---------------------|
+| `memory/context.md` | Who you are — role, org, coaching preferences | Once at onboarding; rarely after |
 | `memory/role_context.md` | Stable facts about how your role is positioned | When something structural changes |
 | `memory/working_theory.md` | Your current theory of how to succeed in this role | When your understanding shifts |
 | `memory/commitments.md` | What you said you'd do, and by when | Most sessions |
+| `memory/decisions.md` | Significant calls made, with rationale | When a real direction is chosen |
 | `memory/tensions.md` | Recurring patterns Amund has noticed | When a pattern surfaces more than once |
 
 See `memory/PROTOCOL.md` for how file writing works.
@@ -86,7 +116,7 @@ See `memory/PROTOCOL.md` for how file writing works.
 ## File Structure
 
 ```
-pioneer-coach/
+amund/
 ├── CLAUDE.md              ← Entry point for Claude Code
 ├── README.md              ← You're reading it
 ├── identity.md            ← Who Amund is
