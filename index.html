@@ -1166,6 +1166,238 @@
         top: 266px;
       }
     }
+    /* ─── Demo Modal ─────────────────────────────────────────────── */
+    .demo-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 4, 14, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .demo-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .demo-modal {
+      background: var(--navy-card);
+      border: 1px solid var(--border-hover);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 780px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+      overflow: hidden;
+    }
+    .demo-overlay.open .demo-modal {
+      transform: translateY(0);
+    }
+    .demo-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .demo-header-label {
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue-300);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .demo-header-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-300);
+      animation: demoDot 2s ease-in-out infinite;
+    }
+    @keyframes demoDot {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    .demo-close {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .demo-close:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+    .demo-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .demo-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 20px 20px 24px;
+      border-right: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .demo-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .demo-tab {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--ff-body);
+      font-size: 12px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .demo-tab:hover { border-color: var(--border-hover); color: var(--text-secondary); }
+    .demo-tab.active {
+      border-color: rgba(74,143,212,0.5);
+      background: rgba(74,143,212,0.08);
+      color: var(--text-primary);
+    }
+    .demo-exchange {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .demo-user-msg {
+      font-size: 14px;
+      color: rgba(150, 195, 255, 0.85);
+      line-height: 1.7;
+      font-style: italic;
+      padding-left: 14px;
+      border-left: 2px solid rgba(74,143,212,0.45);
+      min-height: 1.7em;
+    }
+    .demo-amund-msg {
+      font-size: 14px;
+      color: var(--text-primary);
+      line-height: 1.75;
+      white-space: pre-line;
+      min-height: 48px;
+    }
+    .demo-exchange-placeholder {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--blue-300);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: cursorBlink 0.8s ease-in-out infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .demo-footer {
+      padding: 10px 24px;
+      border-top: 1px solid var(--border);
+      font-family: var(--ff-mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Character column */
+    .demo-char-col {
+      width: 200px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+    }
+    .demo-char-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: demoFloat 6s ease-in-out infinite;
+    }
+    .demo-char-stage.responding {
+      animation: demoFloatFast 4s ease-in-out infinite;
+    }
+    @keyframes demoFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes demoFloatFast {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* Eye squint for responding state */
+    .demo-char-stage.responding .md-am-ey {
+      animation: none !important;
+      transform: scaleY(0.22) !important;
+      transition: transform 0.3s ease;
+    }
+    /* Glow color shift */
+    .demo-char-stage .md-am-agl {
+      transition: fill 0.5s ease;
+    }
+    .demo-char-stage.responding .md-am-agl {
+      fill: rgba(170,60,210,0.36) !important;
+    }
+
+    /* Modal eye animations */
+    .md-am-eg       { animation: am-eyeScan 18s ease-in-out infinite; }
+    .md-am-eg.md-er { animation-delay: 0.4s; }
+    .md-am-ey {
+      animation: am-blink 9s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .md-am-eg.md-er .md-am-ey { animation-delay: 0.14s; }
+    .md-am-agl { animation: am-gpulse 4.4s ease-in-out infinite; }
+
+    @media (max-width: 700px) {
+      .demo-char-col { display: none; }
+      .demo-left { border-right: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -1223,8 +1455,8 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
               Download on GitHub
             </a>
-            <a href="#" class="btn-secondary">
-              Try Amund →
+            <a href="#" class="btn-secondary" id="demoBtn">
+              See it coach →
             </a>
           </div>
           <div style="font-size:12px;color:var(--text-muted);margin-top:12px;font-family:var(--ff-mono);letter-spacing:0.04em;">
@@ -1830,6 +2062,219 @@
       }
       requestAnimationFrame(tick);
     })();
+  </script>
+
+  <!-- ─── Demo Modal ─────────────────────────────────────────────── -->
+  <div class="demo-overlay" id="demoOverlay" role="dialog" aria-modal="true" aria-label="Amund coaching demo">
+    <div class="demo-modal">
+
+      <div class="demo-header">
+        <div class="demo-header-label">
+          <div class="demo-header-dot"></div>
+          Amund — in session
+        </div>
+        <button class="demo-close" id="demoClose" aria-label="Close">✕</button>
+      </div>
+
+      <div class="demo-body">
+
+        <!-- Left: tabs + exchange -->
+        <div class="demo-left">
+          <div class="demo-tabs">
+            <button class="demo-tab active" data-tab="0">Left out of an AI decision</button>
+            <button class="demo-tab" data-tab="1">Under pressure to oversell</button>
+            <button class="demo-tab" data-tab="2">Waiting for permission to move</button>
+          </div>
+          <div class="demo-exchange">
+            <div class="demo-exchange-placeholder" id="demoPlaceholder">Select a scenario</div>
+            <div class="demo-user-msg" id="demoUser" style="display:none;"></div>
+            <div class="demo-amund-msg" id="demoAmund" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- Right: character -->
+        <div class="demo-char-col">
+          <div class="demo-char-stage" id="demoCharStage">
+            <svg viewBox="0 0 200 244" width="155" height="189" style="overflow:visible;">
+              <defs>
+                <filter id="md-eg" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="2.8" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="md-og" x="-110%" y="-110%" width="320%" height="320%">
+                  <feGaussianBlur stdDeviation="18" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <linearGradient id="md-bg" x1="18%" y1="0%" x2="82%" y2="100%">
+                  <stop offset="0%"   stop-color="#bde4ff"/>
+                  <stop offset="20%"  stop-color="#88aeee"/>
+                  <stop offset="48%"  stop-color="#5262cc"/>
+                  <stop offset="74%"  stop-color="#4232a4"/>
+                  <stop offset="100%" stop-color="#c044be"/>
+                </linearGradient>
+                <radialGradient id="md-ig" cx="36%" cy="24%" r="66%">
+                  <stop offset="0%"   stop-color="#d4ecff" stop-opacity="0.50"/>
+                  <stop offset="100%" stop-color="#5870d0" stop-opacity="0"/>
+                </radialGradient>
+                <clipPath id="md-cc">
+                  <polygon points="100,8 117,25 135,38 151,56 161,80 159,106 151,130 141,152 129,172 117,190 109,202 100,214 91,202 83,190 71,172 59,152 49,130 41,106 39,80 49,56 65,38 83,25"/>
+                </clipPath>
+              </defs>
+              <ellipse cx="100" cy="112" rx="62" ry="76" fill="rgba(68,88,210,0.22)" filter="url(#md-og)" class="md-am-agl"/>
+              <polygon points="100,8 117,25 135,38 151,56 161,80 159,106 151,130 141,152 129,172 117,190 109,202 100,214 91,202 83,190 71,172 59,152 49,130 41,106 39,80 49,56 65,38 83,25" fill="url(#md-bg)"/>
+              <g clip-path="url(#md-cc)">
+                <polygon points="100,8  117,25 100,47  83,25"                fill="#dff3ff" opacity="0.78"/>
+                <polygon points="83,25  100,47 75,84   65,38"                fill="#bcd8f8" opacity="0.56"/>
+                <polygon points="117,25 135,38 121,85  100,47"               fill="#7c96d4" opacity="0.54"/>
+                <polygon points="135,38 151,56 143,91  121,85"               fill="#4454ac" opacity="0.66"/>
+                <polygon points="65,38  75,84  55,97   49,56"                fill="#a4c4ec" opacity="0.46"/>
+                <polygon points="39,80  49,56  55,97   43,107"               fill="#8cacda" opacity="0.52"/>
+                <polygon points="161,80 159,106 153,109 143,91 151,56"       fill="#2a3480" opacity="0.78"/>
+                <polygon points="91,202 100,214 109,202 100,198"             fill="#e66cd4" opacity="0.82"/>
+                <ellipse cx="90" cy="68" rx="20" ry="28" fill="url(#md-ig)"/>
+              </g>
+              <ellipse cx="100" cy="116" rx="22"   ry="27"   fill="#040810"/>
+              <ellipse cx="100" cy="116" rx="19"   ry="23.5" fill="#060d1c"/>
+              <g class="md-am-eg">
+                <rect x="87"  y="105" width="7" height="18" rx="2" fill="#b0dcff" filter="url(#md-eg)" class="md-am-ey"/>
+                <rect x="89"  y="107" width="3" height="9"  rx="1" fill="white" opacity="0.60"/>
+              </g>
+              <g class="md-am-eg md-er">
+                <rect x="106" y="105" width="7" height="18" rx="2" fill="#b0dcff" filter="url(#md-eg)" class="md-am-ey"/>
+                <rect x="108" y="107" width="3" height="9"  rx="1" fill="white" opacity="0.60"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="demo-footer">Pre-scripted exchange. No data stored.</div>
+    </div>
+  </div>
+
+  <script>
+    // ─── Demo Modal ───────────────────────────────────────────────
+    const scenarios = [
+      {
+        user: "I just found out my company is rolling out a new AI tool org-wide. I wasn't in any of the conversations. This is literally what my role exists for.",
+        amund: "You're not overreacting. But frustration isn't the useful signal here.[[pause]]The useful signal is this: your role is not yet part of the decision system.[[pause]]What decision was made — and what part of it should your role have influenced?"
+      },
+      {
+        user: "My VP said I come across as too certain. But I've done the research. I feel like I have to sell this or no one takes it seriously.",
+        amund: "What was the data based on?[[longpause]]A pilot. One team. Twelve people.[[pause]]And you led with \"our data shows a 30% reduction.\" That's not what your data shows. That's what your pilot suggested.[[pause]]Those aren't the same thing. Your VP knows the difference."
+      },
+      {
+        user: "I want to define what my role owns versus other teams. But I feel like I need my manager to weigh in before I move forward.",
+        amund: "How long have you been waiting on that conversation?[[longpause]]You built this role. The ambiguity is yours to resolve — not wait out.[[pause]]What's the smallest version of this conversation you could have this week?"
+      }
+    ];
+
+    let typewriterTimeout = null;
+    let currentTab = 0;
+
+    function sleep(ms) {
+      return new Promise(r => setTimeout(r, ms));
+    }
+
+    async function typeUser(text) {
+      const el = document.getElementById('demoUser');
+      el.textContent = '';
+      el.style.display = '';
+      for (const ch of text) {
+        el.textContent += ch;
+        await sleep(22);
+      }
+    }
+
+    async function runTypewriter(text) {
+      const el = document.getElementById('demoAmund');
+      const stage = document.getElementById('demoCharStage');
+      el.innerHTML = '';
+      el.style.display = '';
+      stage.classList.add('responding');
+
+      const parts = text.split(/(\[\[(?:long)?pause\]\])/);
+      let content = '';
+
+      for (const part of parts) {
+        if (part === '[[pause]]') {
+          await sleep(700);
+          content += '<br>';
+        } else if (part === '[[longpause]]') {
+          await sleep(1400);
+          content += '<br>';
+        } else {
+          for (const ch of part) {
+            content += ch === '\n'
+              ? '<br>'
+              : ch.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+            el.innerHTML = content + '<span class="demo-cursor"></span>';
+            await sleep(ch === '\n' ? 60 : 20);
+          }
+        }
+      }
+      el.innerHTML = content;
+      stage.classList.remove('responding');
+    }
+
+    function showPlaceholder() {
+      document.getElementById('demoPlaceholder').style.display = '';
+      document.getElementById('demoUser').style.display = 'none';
+      document.getElementById('demoAmund').style.display = 'none';
+      document.getElementById('demoCharStage').classList.remove('responding');
+      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+    }
+
+    function loadTab(idx) {
+      currentTab = idx;
+      document.querySelectorAll('.demo-tab').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+
+      document.getElementById('demoPlaceholder').style.display = 'none';
+      document.getElementById('demoUser').style.display = 'none';
+      document.getElementById('demoAmund').style.display = 'none';
+      document.getElementById('demoAmund').innerHTML = '';
+      document.getElementById('demoCharStage').classList.remove('responding');
+
+      typeUser(scenarios[idx].user).then(() => {
+        setTimeout(() => runTypewriter(scenarios[idx].amund), 500);
+      });
+    }
+
+    document.querySelectorAll('.demo-tab').forEach((tab, i) => {
+      tab.addEventListener('click', () => loadTab(i));
+    });
+
+    const overlay = document.getElementById('demoOverlay');
+
+    function openDemo() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showPlaceholder();
+    }
+
+    function closeDemo() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      showPlaceholder();
+    }
+
+    document.getElementById('demoBtn').addEventListener('click', e => {
+      e.preventDefault();
+      openDemo();
+    });
+
+    document.getElementById('demoClose').addEventListener('click', closeDemo);
+
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeDemo();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeDemo();
+    });
   </script>
 
 </body>
