@@ -47,11 +47,14 @@ That distinction is the whole design. Amund finds what's actually happening befo
 
 **Shareable artifacts** — Sessions produce structured outputs you can hand over: thinking summaries, position briefs, stakeholder framings, week closes. Generated silently and saved to `artifacts/outputs/`.
 
+
+*Curious about the design decisions behind Amund? See `DESIGN_NOTES.md`.*
+
 ---
 
 ## Setup (Do This Once)
 
-**1. Open the folder in VS Code with Claude Code**
+**1. Open the folder in Claude Code or, even better, VS Code with Claude Code**
 
 Open the `amund/` folder as your workspace. Claude Code will automatically load `CLAUDE.md` at the start of each session, which tells it to read the core files.
 
@@ -63,7 +66,7 @@ Open `memory/context.md` and fill it in — or skip this and let Amund interview
 
 Select Guide or Challenger. If you skip it, Amund defaults to Challenger — direct, unsentimental, action-oriented.
 
-**4. Leave the other memory/ files empty**
+**3. Leave the other memory/ files empty**
 
 They start empty. Amund populates them over time and can write to them directly at the end of sessions with your permission.
 
@@ -119,6 +122,7 @@ See `memory/PROTOCOL.md` for how file writing works.
 amund/
 ├── CLAUDE.md              ← Entry point for Claude Code
 ├── README.md              ← You're reading it
+├── DESIGN_NOTES.md        ← Supplemental notes on design decisions behind Amund
 ├── identity.md            ← Who Amund is
 ├── rules.md               ← How Amund coaches
 ├── board.md               ← Board mode — loaded on demand
