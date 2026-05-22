@@ -1306,7 +1306,17 @@
       white-space: pre-line;
       min-height: 48px;
     }
-    .demo-exchange-placeholder {
+    .demo-scenario-label {
+      font-family: var(--ff-mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-300);
+      opacity: 0.7;
+      margin-bottom: 10px;
+      display: none;
+    }
+    .demo-scenario-label.visible { display: block; }
       flex: 1;
       display: flex;
       align-items: center;
@@ -1318,6 +1328,7 @@
       color: var(--text-muted);
       opacity: 0.5;
     }
+    .demo-cursor {
       display: inline-block;
       width: 2px;
       height: 1em;
@@ -1460,7 +1471,7 @@
             </a>
           </div>
           <div style="font-size:12px;color:var(--text-muted);margin-top:12px;font-family:var(--ff-mono);letter-spacing:0.04em;">
-            Works directly in Claude. No install required.
+            Use in Claude Code by opening the folder as your workspace.
           </div>
         </div>
 
@@ -1648,9 +1659,7 @@
             A coach built from<br/><em>context, not code.</em>
           </h2>
           <p class="section-body reveal reveal-delay-2">
-            Amund runs as a set of markdown files inside Claude. No app, no setup, no account.
-            You bring a real situation. It responds like a coach — asking questions,
-            challenging your thinking, and helping you move.
+            Amund runs as a set of markdown files inside Claude. Open the folder in Claude Code and start with a real situation. It responds like a coach — asking questions, challenging your thinking, and helping you move.
           </p>
         </div>
 
@@ -2087,6 +2096,7 @@
           </div>
           <div class="demo-exchange">
             <div class="demo-exchange-placeholder" id="demoPlaceholder">Select a scenario</div>
+            <div class="demo-scenario-label" id="demoLabel"></div>
             <div class="demo-user-msg" id="demoUser" style="display:none;"></div>
             <div class="demo-amund-msg" id="demoAmund" style="display:none;"></div>
           </div>
@@ -2157,14 +2167,17 @@
     // ─── Demo Modal ───────────────────────────────────────────────
     const scenarios = [
       {
+        label: 'Authority Gap',
         user: "I just found out my company is rolling out a new AI tool org-wide. I wasn't in any of the conversations. This is literally what my role exists for.",
         amund: "You're not overreacting. But frustration isn't the useful signal here.[[pause]]The useful signal is this: your role is not yet part of the decision system.[[pause]]What decision was made — and what part of it should your role have influenced?"
       },
       {
+        label: 'Calibration Trap',
         user: "My VP said I come across as too certain. But I've done the research. I feel like I have to sell this or no one takes it seriously.",
         amund: "What was the data based on?[[longpause]]A pilot. One team. Twelve people.[[pause]]And you led with \"our data shows a 30% reduction.\" That's not what your data shows. That's what your pilot suggested.[[pause]]Those aren't the same thing. Your VP knows the difference."
       },
       {
+        label: 'Ownership Avoidance',
         user: "I want to define what my role owns versus other teams. But I feel like I need my manager to weigh in before I move forward.",
         amund: "How long have you been waiting on that conversation?[[longpause]]You built this role. The ambiguity is yours to resolve — not wait out.[[pause]]What's the smallest version of this conversation you could have this week?"
       }
@@ -2220,6 +2233,7 @@
 
     function showPlaceholder() {
       document.getElementById('demoPlaceholder').style.display = '';
+      document.getElementById('demoLabel').classList.remove('visible');
       document.getElementById('demoUser').style.display = 'none';
       document.getElementById('demoAmund').style.display = 'none';
       document.getElementById('demoCharStage').classList.remove('responding');
@@ -2233,6 +2247,9 @@
       });
 
       document.getElementById('demoPlaceholder').style.display = 'none';
+      const labelEl = document.getElementById('demoLabel');
+      labelEl.textContent = scenarios[idx].label;
+      labelEl.classList.add('visible');
       document.getElementById('demoUser').style.display = 'none';
       document.getElementById('demoAmund').style.display = 'none';
       document.getElementById('demoAmund').innerHTML = '';
