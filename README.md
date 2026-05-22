@@ -52,6 +52,12 @@ You can also direct it:
 > "I need to Untangle — I'm overwhelmed and don't know where to start."
 > "Accountability check — did I do what I said I'd do last week?"
 
+Not sure where to start? Try one of these:
+
+> "I have an interview for a first-of-kind AI role. Help me identify the stories that prove I can build in ambiguity."
+> "I need to make my work visible to leadership without sounding like I'm pitching too hard."
+> "I'm stuck between two paths and I need help making the call."
+
 ### During a Session
 
 The coach will ask before it advises. It will name what it's noticing. It may say something uncomfortable. That's working as designed.
@@ -108,7 +114,8 @@ pioneer-coach/
     ├── managing_up.md
     ├── saying_no.md
     ├── building_credibility.md
-    └── career_navigation.md
+    ├── career_navigation.md
+    └── opportunity_navigation.md
 ```
 
 ---
