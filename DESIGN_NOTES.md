@@ -139,15 +139,14 @@ That matters because people in uncharted roles often do not need more encouragem
 
 ## The landing page choice
 
-The landing page includes a simulated coaching demo rather than a live API demo.
+The landing page uses a simulated coaching demo rather than a live API call.
+That was deliberate, and not primarily for technical reasons.
 
-That was deliberate.
+A live demo would misrepresent how Amund works. This coach is built around context that accumulates — a user profile, memory across sessions, commitments made and tracked over time. A context-free exchange with a stranger who just landed on a portfolio page is not what Amund is for. Showing that exchange would demonstrate the wrong thing.
 
-A live demo would be more technically impressive, but it would also introduce avoidable problems for a public portfolio page: exposed credentials risk, token cost, rate limits, inconsistent output, and possible failure during judging.
+The simulated demo shows the intended experience: what it feels like to be in a session with a coach that already knows something about you. It uses realistic exchanges, loads instantly, and doesn't fail during judging.
 
-The simulated demo does a different job. It shows the intended coaching experience reliably. It uses realistic exchanges, keeps the page fast, and lets a visitor understand the product without installing anything.
-
-For this submission, controlled experience quality mattered more than live generation.
+A constrained live demo may make sense in a future version, once there's an onboarding flow that earns the context first.
 
 ---
 
@@ -188,17 +187,11 @@ The next iteration would focus on real-session refinement:
 
 ## What this project demonstrates
 
-Amund is a folder-based coach, but the more important design work is the system around it:
+The folder is the product, but the design challenge was something more specific: build a coaching system, not a coaching prompt.
 
-- a specific domain with recurring judgment problems
-- a coaching behavior model, not just a prompt
-- transparent memory
-- on-demand reference loading
-- pressure-testing modes
-- artifacts that move thinking into stakeholder contexts
-- a landing page that makes the experience legible before anyone opens the repo
+A prompt tells Claude how to respond. A system encodes judgment — what to notice, what to name, when to push, what to do with what it learns. The difference shows up in the architecture: memory designed as current state rather than transcript, reference material opinionated enough to ask better questions, artifacts that move session thinking into stakeholder contexts, and a Board mode held separately so the always-loaded files stay focused.
 
-The folder is the product, but the design challenge was broader: make an AI coach that can hold context, apply pressure, and help someone move when the work is still undefined.
+Whether that system holds up under real, sustained use with people who are not me is the next question. This submission is the foundation.
 
 ---
 
